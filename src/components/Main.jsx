@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
-import { NavBar, Register } from "./index";
+import { NavBar, Register, Login } from "./index";
 
 const Main = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -19,7 +19,17 @@ const Main = () => {
         <Route path={"/routines"}>{/* component to render */}</Route>
         <Route path={"/myroutines"}>{/* component to render */}</Route>
         <Route path={"/activities"}>{/* component to render */}</Route>
-        <Route path={"/login"}>{/* component to render */}</Route>
+        <Route path={"/login"}>
+          <Login
+            username={username}
+            setUsername={setUsername}
+            password={password}
+            setPassword={setPassword}
+            isLoggedIn={isLoggedIn}
+            setIsLoggedIn={setIsLoggedIn}
+            setToken={setToken}
+          />
+        </Route>
         <Route path={"/register"}>
           <Register
             username={username}
@@ -29,7 +39,6 @@ const Main = () => {
             isLoggedIn={isLoggedIn}
             setIsLoggedIn={setIsLoggedIn}
             setToken={setToken}
-            token={token}
           />
         </Route>
         <Redirect to={"/"} />

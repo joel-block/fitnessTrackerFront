@@ -38,3 +38,17 @@ export async function loginUser(username, password) {
     throw error;
   }
 }
+
+export async function getPublicRoutines() {
+  try {
+    const response = await fetch(`${API_URL}routines`, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    throw error;
+  }
+}

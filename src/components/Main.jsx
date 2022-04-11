@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
-import { NavBar, Register, Login, Routines } from "./index";
+import { NavBar, Register, Login, Routines, MyRoutines } from "./index";
 
 const Main = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -19,7 +19,9 @@ const Main = () => {
         <Route path={"/routines"}>
           <Routines />
         </Route>
-        <Route path={"/myroutines"}>{/* component to render */}</Route>
+        <Route path={"/myroutines"}>
+          <MyRoutines isLoggedIn={isLoggedIn} token={token} />
+        </Route>
         <Route path={"/activities"}>{/* component to render */}</Route>
         <Route path={"/login"}>
           <Login

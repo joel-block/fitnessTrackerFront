@@ -52,3 +52,59 @@ export async function getPublicRoutines() {
     throw error;
   }
 }
+
+export async function getUserRoutines(token) {
+  try {
+    const responseUsername = await fetch(`${API_URL}users/me`, {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    const { username } = await responseUsername.json();
+    const responseRoutines = await fetch(
+      `${API_URL}users/${username}/routines`,
+      {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    const data = responseRoutines.json();
+    return data;
+  } catch (error) {
+    throw error;
+  }
+}
+
+export async function updateUserRoutine(
+  token,
+  routineId,
+  { name, goal, isPublic }
+) {
+  let updateObj = {};
+  if (name) {
+    updateObj.name = name;
+  }
+  if (goal) {
+    updateObj.goal = goal;
+  }
+  if (typeof isPublic === "boolean") {
+    updateObj.isPublic = isPublic;
+  }
+  try {
+    const response = await fetch(`${API_URL}routines/${routineId}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify(updateObj),
+    });
+    const data = response.json();
+    return data;
+  } catch (error) {
+    throw error;
+  }
+}

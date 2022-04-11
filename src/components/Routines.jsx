@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { getPublicRoutines } from "../api";
 
-const Routines = (props) => {
+const Routines = () => {
   const [routines, setRoutines] = useState([]);
 
   useEffect(() => {
@@ -17,20 +17,23 @@ const Routines = (props) => {
       {routines.map((routine, i) => {
         return (
           <div key={`publicRoutine-${i}`} className="single-routine">
-            <h3>{routine.name}</h3>
-            <h4>{routine.creatorName}</h4>
+            <h2>Routine: {routine.name}</h2>
+            <h3>{routine.creatorName}</h3>
             <p>{routine.goal}</p>
-            {routine.activities.map((activity, j) => {
-              return (
-                <span key={`routine-${i}-activity-${j}`}>
-                  <h4>{activity.name}</h4>
-                  <p>{activity.description}</p>
-                  <small>
-                    Duration: {activity.duration} | Count: {activity.count}
-                  </small>
-                </span>
-              );
-            })}
+            <h4>Activities:</h4>
+            <ol>
+              {routine.activities.map((activity, j) => {
+                return (
+                  <li key={`routine-${i}-activity-${j}`}>
+                    <h5>{activity.name}</h5>
+                    <p>{activity.description}</p>
+                    <small>
+                      Duration: {activity.duration} | Count: {activity.count}
+                    </small>
+                  </li>
+                );
+              })}
+            </ol>
           </div>
         );
       })}

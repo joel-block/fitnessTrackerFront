@@ -22,6 +22,7 @@ const NavBar = ({ isLoggedIn, setIsLoggedIn }) => {
                 onClick={() => {
                   setIsLoggedIn(false);
                 }}
+                to={"/"}
               >
                 Logout
               </Link>

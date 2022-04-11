@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const NavBar = (props) => {
+const NavBar = ({ isLoggedIn, setIsLoggedIn }) => {
   return (
     <div className="navbar-container">
       <div className="link-container">
@@ -9,9 +9,29 @@ const NavBar = (props) => {
           <Link to={"/"} className="nav-item">
             Home
           </Link>
-          <Link to={"/somewhereelse"} className="nav-item">
-            Somewhere else
+          <Link to={"/routines"} className="nav-item">
+            Routines
           </Link>
+          <>{isLoggedIn ? <Link to={"/myroutines"}>My Routines</Link> : null}</>
+          <Link to={"/activities"} className="nav-item">
+            Activities
+          </Link>
+          <>
+            {isLoggedIn ? (
+              <Link
+                onClick={() => {
+                  setIsLoggedIn(false);
+                }}
+              >
+                Logout
+              </Link>
+            ) : (
+              <>
+                <Link to={"/login"}>Login</Link>
+                <Link to={"/register"}>Register</Link>
+              </>
+            )}
+          </>
         </div>
       </div>
     </div>

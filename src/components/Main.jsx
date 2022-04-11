@@ -1,18 +1,36 @@
-import React from "react";
+import React, { useState } from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
-import { NavBar } from "./index";
+import { NavBar, Register } from "./index";
 
 const Main = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [token, setToken] = useState("");
+
   return (
     <div className="main-container">
-      <NavBar />
+      <NavBar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
       <h1 className="main-title">Hello Main</h1>
       <Switch>
-        <Route path={"/"}>
+        <Route exact path={"/"}>
           {/* component to render */}
         </Route>
-        <Route path={"/somewhereelse"}>
-          {/* component to render */}
+        <Route path={"/routines"}>{/* component to render */}</Route>
+        <Route path={"/myroutines"}>{/* component to render */}</Route>
+        <Route path={"/activities"}>{/* component to render */}</Route>
+        <Route path={"/login"}>{/* component to render */}</Route>
+        <Route path={"/register"}>
+          <Register
+            username={username}
+            setUsername={setUsername}
+            password={password}
+            setPassword={setPassword}
+            isLoggedIn={isLoggedIn}
+            setIsLoggedIn={setIsLoggedIn}
+            setToken={setToken}
+            token={token}
+          />
         </Route>
         <Redirect to={"/"} />
       </Switch>

@@ -1,11 +1,12 @@
 {
-  "name": "reactfrontendboilerplate",
+  "name": "fitnesstrac.kr",
   "version": "1.0.0",
-  "description": "",
+  "description": "Front end portion of FitnessTra.kr Workshop",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "react-scripts start"
+    "test": "react-scripts test",
+    "start": "react-scripts start",
+    "build": "react-scripts build"
   },
   "keywords": [],
   "author": "",

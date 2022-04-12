@@ -1,7 +1,8 @@
-import React from "react"
+import React from "react";
+import woman from "../images/woman.webp";
 
 const Home = (props) => {
-    return <h1>Home</h1>
-}
+  return <img id="woman" src={woman} alt="woman exercising" />;
+};
 
-export default Home
+export default Home;

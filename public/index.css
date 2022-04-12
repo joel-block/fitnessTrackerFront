@@ -34,6 +34,7 @@ header {
   margin: 10px;
   color: darkslategrey;
   padding: 10px;
+  box-shadow: 10px 5px 5px darkslategrey;
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
 }
 
@@ -57,5 +58,8 @@ header {
   margin: 10px;
 }
 #woman {
-  justify-self: center;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
 }

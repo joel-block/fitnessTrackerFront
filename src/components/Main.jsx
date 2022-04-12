@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 
 import { NavBar, Register, Login, Routines, MyRoutines, Home } from "./index";
-import woman from "../images/woman.webp";
 
 const Main = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -16,7 +15,7 @@ const Main = () => {
         <h1 className="main-title">Fitness Trac.kr</h1>
         <NavBar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
       </header>
-      <img id="woman" src={woman} alt="woman exercising" />
+
       <Switch>
         <Route exact path={"/"}>
           <Home />

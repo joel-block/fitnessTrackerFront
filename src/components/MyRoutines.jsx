@@ -1,16 +1,19 @@
 import React, { useState, useEffect } from "react";
-import { getUserRoutines } from "../api";
+import { getUserRoutines, getAllActivities } from "../api";
 import { SingleRoutine } from "./";
 
 const MyRoutines = ({ isLoggedIn, token }) => {
   const [myRoutines, setMyRoutines] = useState([]);
+  const [activities, setActivities] = useState([]);
 
   useEffect(() => {
-    const fetchRoutines = async (token) => {
+    const fetchRoutinesAndActivities = async (token) => {
       const userRoutines = await getUserRoutines(token);
       setMyRoutines(userRoutines);
+      const allActivities = await getAllActivities();
+      setActivities(allActivities);
     };
-    fetchRoutines(token);
+    fetchRoutinesAndActivities(token);
   }, []);
 
   return (
@@ -24,6 +27,7 @@ const MyRoutines = ({ isLoggedIn, token }) => {
                 key={`myroutine-${i}`}
                 token={token}
                 routine={routine}
+                activities={activities}
               />
             );
           })}

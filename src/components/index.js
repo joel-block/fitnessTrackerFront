@@ -6,3 +6,6 @@ export { default as Routines } from "./Routines";
 export { default as MyRoutines } from "./MyRoutines";
 export { default as SingleRoutine } from "./SingleRoutine";
 export { default as EditRoutine } from "./EditRoutine";
+export { default as SingleActivity } from "./SingleActivity";
+export { default as AddActivity } from "./AddActivity";
+export { default as EditActivity } from "./EditActivity";

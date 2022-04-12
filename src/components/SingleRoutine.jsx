@@ -1,12 +1,16 @@
 import React, { useState } from "react";
-import { EditRoutine } from "./";
+import { EditRoutine, SingleActivity, AddActivity } from "./";
+import { deleteRoutine } from "../api";
 
-const SingleRoutine = ({ routine, token }) => {
+const SingleRoutine = ({ routine, token, activities }) => {
   const [clickedEditRoutine, setClickedEditRoutine] = useState(false);
   const [edited, setEdited] = useState(false);
   const [editedName, setEditedName] = useState("");
   const [editedGoal, setEditedGoal] = useState("");
   const [editedPublic, setEditedPublic] = useState(false);
+  const [deleted, setDeleted] = useState(false);
+  const [clickedAddActivity, setClickedAddActivity] = useState(false);
+  const [added, setAdded] = useState(false);
 
   return (
     <div className="single-routine">
@@ -35,8 +39,18 @@ const SingleRoutine = ({ routine, token }) => {
           </button>
         ) : null}
         <button
-          onClick={(e) => {
+          onClick={async (e) => {
             e.preventDefault();
+            let text = "Are you sure you want to delete this routine?";
+            if (confirm(text)) {
+              let response = await deleteRoutine(token, routine.id);
+              if (response.success) {
+                setDeleted(true);
+                alert("Routine successfully deleted!");
+              } else {
+                alert("There was a problem deleting your routine!");
+              }
+            }
           }}
         >
           Delete Routine
@@ -57,19 +71,41 @@ const SingleRoutine = ({ routine, token }) => {
           </span>
         ) : null}
       </span>
-      <span>{edited ? <h4>Post Successfully Edited!</h4> : null}</span>
+      <span>{edited ? <h4>Routine Successfully Edited!</h4> : null}</span>
+      <span>{deleted ? <h4>Routine Successfully Deleted!</h4> : null}</span>
 
       <h4>Activities:</h4>
+      <button
+        onClick={(e) => {
+          e.preventDefault();
+          setClickedAddActivity(true);
+        }}
+      >
+        Add Activity
+      </button>
+      <span>
+        {added ? <h4>Activity Successfully Added to Routine!</h4> : null}
+      </span>
+      <span>
+        {clickedAddActivity ? (
+          <span>
+            <AddActivity
+              activities={activities}
+              token={token}
+              routineId={routine.id}
+              setClickedAddActivity={setClickedAddActivity}
+              setAdded={setAdded}
+            />
+          </span>
+        ) : null}
+      </span>
       <ol>
         {routine.activities.map((activity, j) => {
           return (
-            <li key={`myroutine-activity-${j}`}>
-              <h5>{activity.name}</h5>
-              <p>{activity.description}</p>
-              <small>
-                Duration: {activity.duration} | Count: {activity.count}
-              </small>
-            </li>
+            <SingleActivity
+              key={`myroutine-activity-${j}`}
+              activity={activity}
+            />
           );
         })}
       </ol>

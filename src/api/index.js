@@ -108,3 +108,54 @@ export async function updateUserRoutine(
     throw error;
   }
 }
+
+export async function deleteRoutine(token, routineId) {
+  try {
+    const response = await fetch(`${API_URL}routines/${routineId}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    const data = response.json();
+    return data;
+  } catch (error) {
+    throw error;
+  }
+}
+
+export async function getAllActivities() {
+  try {
+    const response = await fetch(`${API_URL}activities`, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const data = response.json();
+    return data;
+  } catch (error) {
+    throw error;
+  }
+}
+
+export async function addActivityToRoutine(
+  token,
+  routineId,
+  { activityId, count, duration }
+) {
+  try {
+    const response = await fetch(`${API_URL}routines/${routineId}/activities`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({ activityId, count, duration }),
+    });
+    const data = response.json();
+    return data;
+  } catch (error) {
+    throw error;
+  }
+}

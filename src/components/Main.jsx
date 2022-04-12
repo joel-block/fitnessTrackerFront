@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
-import { NavBar, Register, Login, Routines, MyRoutines } from "./index";
+import { NavBar, Register, Login, Routines, MyRoutines, Home } from "./index";
 
 const Main = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -14,7 +14,7 @@ const Main = () => {
       <h1 className="main-title">Hello Main</h1>
       <Switch>
         <Route exact path={"/"}>
-          {/* component to render */}
+          <Home />
         </Route>
         <Route path={"/routines"}>
           <Routines />

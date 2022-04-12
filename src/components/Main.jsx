@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
-import { NavBar, Register, Login, Routines, MyRoutines } from "./index";
+
+import { NavBar, Register, Login, Routines, MyRoutines, Home } from "./index";
 import woman from "../images/woman.webp";
+
 const Main = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [username, setUsername] = useState("");
@@ -17,7 +19,7 @@ const Main = () => {
       <img id="woman" src={woman} alt="woman exercising" />
       <Switch>
         <Route exact path={"/"}>
-          {/* component to render */}
+          <Home />
         </Route>
         <Route path={"/routines"}>
           <Routines />

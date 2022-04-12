@@ -1,0 +1,61 @@
+.navbar-container {
+  background-color: darkslateblue;
+  padding: 10px;
+  display: flex;
+}
+.nav-item {
+  color: darkslateblue;
+  padding: 10px;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+}
+.link-container {
+  background-color: lavender;
+}
+header {
+  background-color: lavender;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  color: darkslategrey;
+}
+
+.main-container {
+  background-color: gray;
+}
+
+.routines-page {
+  color: black;
+}
+
+.single-routine {
+  background-color: lavender;
+  display: inline-block;
+  vertical-align: top;
+  height: 600px;
+  width: 25%;
+  margin: 10px;
+  color: darkslategrey;
+  padding: 10px;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+}
+
+.single-routine h2 {
+  text-align: center;
+}
+
+.registration-page {
+  background-color: darkslateblue;
+  color: lavender;
+  padding: 10px;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  justify-content: space-between;
+}
+.form-container form {
+  justify-items: flex-end;
+  display: flex;
+  flex-direction: row;
+}
+.form-container form label {
+  margin: 10px;
+}
+#woman {
+  justify-self: center;
+}

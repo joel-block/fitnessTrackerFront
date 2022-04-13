@@ -104,6 +104,7 @@ const SingleRoutine = ({ routine, token, activities }) => {
           return (
             <SingleActivity
               key={`myroutine-activity-${j}`}
+              token={token}
               activity={activity}
             />
           );

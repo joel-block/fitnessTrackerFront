@@ -93,6 +93,9 @@ export async function updateUserRoutine(
   if (typeof isPublic === "boolean") {
     updateObj.isPublic = isPublic;
   }
+  if (Object.keys(updateObj).length === 0) {
+    return;
+  }
   try {
     const response = await fetch(`${API_URL}routines/${routineId}`, {
       method: "PATCH",
@@ -153,6 +156,86 @@ export async function addActivityToRoutine(
       },
       body: JSON.stringify({ activityId, count, duration }),
     });
+    const data = response.json();
+    return data;
+  } catch (error) {
+    throw error;
+  }
+}
+
+export async function updateActivity(token, activityId, { name, description }) {
+  let updateObj = {};
+  if (name) {
+    updateObj.name = name;
+  }
+  if (description) {
+    updateObj.description = description;
+  }
+  if (Object.keys(updateObj).length === 0) {
+    return;
+  }
+  try {
+    const response = await fetch(`${API_URL}activities/${activityId}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify(updateObj),
+    });
+    const data = response.json();
+    return data;
+  } catch (error) {
+    throw error;
+  }
+}
+
+export async function updateRoutineActivity(
+  token,
+  routineActivityId,
+  { count, duration }
+) {
+  let updateObj = {};
+  if (count !== null) {
+    updateObj.count = count;
+  }
+  if (duration !== null) {
+    updateObj.duration = duration;
+  }
+  if (Object.keys(updateObj).length === 0) {
+    return;
+  }
+  try {
+    const response = await fetch(
+      `${API_URL}routine_activities/${routineActivityId}`,
+      {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify(updateObj),
+      }
+    );
+    const data = response.json();
+    return data;
+  } catch (error) {
+    throw error;
+  }
+}
+
+export async function removeActivityFromRoutine(token, routineActivityId) {
+  try {
+    const response = await fetch(
+      `${API_URL}routine_activities/${routineActivityId}`,
+      {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
     const data = response.json();
     return data;
   } catch (error) {

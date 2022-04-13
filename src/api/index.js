@@ -53,15 +53,23 @@ export async function getPublicRoutines() {
   }
 }
 
-export async function getUserRoutines(token) {
+export async function getUser(token) {
   try {
-    const responseUsername = await fetch(`${API_URL}users/me`, {
+    const response = await fetch(`${API_URL}users/me`, {
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
     });
-    const { username } = await responseUsername.json();
+    const data = response.json();
+    return data;
+  } catch (error) {
+    throw error;
+  }
+}
+
+export async function getUserRoutines(token, username) {
+  try {
     const responseRoutines = await fetch(
       `${API_URL}users/${username}/routines`,
       {
@@ -236,6 +244,27 @@ export async function removeActivityFromRoutine(token, routineActivityId) {
         },
       }
     );
+    const data = response.json();
+    return data;
+  } catch (error) {
+    throw error;
+  }
+}
+
+export async function postRoutine(token, { name, goal, isPublic }) {
+  let routineObj = { name, goal };
+  if (typeof isPublic === "boolean") {
+    routineObj.isPublic = isPublic;
+  }
+  try {
+    const response = await fetch(`${API_URL}routines`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify(routineObj),
+    });
     const data = response.json();
     return data;
   } catch (error) {

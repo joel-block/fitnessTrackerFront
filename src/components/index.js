@@ -10,4 +10,5 @@ export { default as SingleActivity } from "./SingleActivity";
 export { default as AddActivity } from "./AddActivity";
 export { default as EditActivity } from "./EditActivity";
 export { default as Home } from "./Home";
+export { default as CreateRoutine } from "./CreateRoutine";
 

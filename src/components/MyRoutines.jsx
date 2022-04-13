@@ -2,13 +2,13 @@ import React, { useState, useEffect } from "react";
 import { getUserRoutines, getAllActivities } from "../api";
 import { SingleRoutine } from "./";
 
-const MyRoutines = ({ isLoggedIn, token }) => {
+const MyRoutines = ({ isLoggedIn, token, user }) => {
   const [myRoutines, setMyRoutines] = useState([]);
   const [activities, setActivities] = useState([]);
 
   useEffect(() => {
     const fetchRoutinesAndActivities = async (token) => {
-      const userRoutines = await getUserRoutines(token);
+      const userRoutines = await getUserRoutines(token, user.username);
       setMyRoutines(userRoutines);
       const allActivities = await getAllActivities();
       setActivities(allActivities);
@@ -21,6 +21,14 @@ const MyRoutines = ({ isLoggedIn, token }) => {
       {isLoggedIn ? (
         <>
           <h2>My Routines</h2>
+          <button
+            onClick={(e) => {
+              e.preventDefault();
+            }}
+          >
+            Add New Routine
+          </button>
+          <br />
           {myRoutines.map((routine, i) => {
             return (
               <SingleRoutine

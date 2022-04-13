@@ -271,3 +271,20 @@ export async function postRoutine(token, { name, goal, isPublic }) {
     throw error;
   }
 }
+
+export async function createNewActivity(token, { name, description }) {
+  try {
+    const response = await fetch(`${API_URL}activities`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({ name, description }),
+    });
+    const data = response.json();
+    return data;
+  } catch (error) {
+    throw error;
+  }
+}

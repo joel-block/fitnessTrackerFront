@@ -1,7 +1,13 @@
 import React, { useState } from "react";
 import { postRoutine } from "../api";
 
-const CreateRoutine = (props) => {
+const CreateRoutine = ({
+  token,
+  setClickedAdd,
+  setAdded,
+  myRoutines,
+  setMyRoutines,
+}) => {
   const [name, setName] = useState("");
   const [goal, setGoal] = useState("");
   const [isPublic, setIsPublic] = useState(false);
@@ -10,11 +16,20 @@ const CreateRoutine = (props) => {
     <form
       onSubmit={async (e) => {
         e.preventDefault();
-        let newRoutine = await postRoutine(token, {
-          name,
-          goal,
-          isPublic,
-        });
+        try {
+          let newRoutine = await postRoutine(token, {
+            name,
+            goal,
+            isPublic,
+          });
+          newRoutine.activities = [];
+          setClickedAdd(false);
+          setAdded(true);
+          const updatedRoutines = [newRoutine, ...myRoutines];
+          setMyRoutines(updatedRoutines);
+        } catch (error) {
+          throw error;
+        }
       }}
     >
       <label>Name:</label>

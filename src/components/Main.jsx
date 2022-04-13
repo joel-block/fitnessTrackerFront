@@ -1,7 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 
-import { NavBar, Register, Login, Routines, MyRoutines, Home } from "./index";
+import {
+  NavBar,
+  Register,
+  Login,
+  Routines,
+  MyRoutines,
+  Home,
+  Activities,
+} from "./index";
 import { getUser } from "../api";
 
 const Main = () => {
@@ -52,7 +60,9 @@ const Main = () => {
         <Route path={"/myroutines"}>
           <MyRoutines isLoggedIn={isLoggedIn} token={token} user={user} />
         </Route>
-        <Route path={"/activities"}>{/* component to render */}</Route>
+        <Route path={"/activities"}>
+          <Activities isLoggedIn={isLoggedIn} token={token} user={user} />
+        </Route>
         <Route path={"/login"}>
           <Login
             setUser={setUser}

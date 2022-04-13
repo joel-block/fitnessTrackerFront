@@ -16,9 +16,7 @@ const SingleActivity = ({ activity, token }) => {
       <span>
         {editedActivity ? (
           <>
-            <h5>
-              Routine: {editedName.length > 0 ? editedName : activity.name}
-            </h5>
+            <h5>{editedName.length > 0 ? editedName : activity.name}</h5>
             <p>
               {editedDescription.length > 0
                 ? editedDescription

@@ -47,7 +47,7 @@ const Activities = ({ isLoggedIn, token, user }) => {
           )}
         </>
       ) : (
-        <p>'Log in to create a new activity!'</p>
+        <p>Log in to create a new activity!</p>
       )}
       {activities.map((activity, i) => {
         return (

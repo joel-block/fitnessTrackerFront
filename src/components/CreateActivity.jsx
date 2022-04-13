@@ -10,6 +10,7 @@ const CreateActivity = ({
 }) => {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
+  const [message, setMessage] = useState(null);
 
   return (
     <form
@@ -20,10 +21,15 @@ const CreateActivity = ({
             name,
             description,
           });
-          const newArr = [response, ...activities];
-          setActivities(newArr);
-          setCreated(true);
-          setClicked(false);
+          if (response.message) {
+            setMessage(response.message);
+          } else {
+            const newArr = [response, ...activities];
+            setMessage(null);
+            setActivities(newArr);
+            setCreated(true);
+            setClicked(false);
+          }
         } catch (error) {
           throw error;
         }
@@ -48,6 +54,7 @@ const CreateActivity = ({
         }}
       />
       <button type="submit">Submit</button>
+      {message !== null ? <p>{message}</p> : null}
     </form>
   );
 };

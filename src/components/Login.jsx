@@ -10,6 +10,7 @@ const Login = ({
   setIsLoggedIn,
   setToken,
 }) => {
+  // the message to be displayed is the message received from the server
   const [message, setMessage] = useState("");
   const [clickedSubmit, setClickedSubmit] = useState(false);
 

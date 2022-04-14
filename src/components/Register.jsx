@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { registerUser } from "../api";
-
+// see login component for specific notes
 const Register = ({
   setUser,
   username,

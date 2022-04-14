@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { EditRoutine, SingleActivity, AddActivity } from "./";
 import { deleteRoutine } from "../api";
-
+// displayed on my routines component
 const SingleRoutine = ({
   routine,
   token,

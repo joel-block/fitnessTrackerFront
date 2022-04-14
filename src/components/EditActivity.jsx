@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { updateActivity, updateRoutineActivity } from "../api";
+// on the my routines page
 
 const EditActivity = ({
   token,
@@ -12,6 +13,7 @@ const EditActivity = ({
   setEditedCount,
   setClickedEdit,
 }) => {
+  // information for the form, but also used to set edited information on the single activity component
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [duration, setDuration] = useState(null);
@@ -22,10 +24,12 @@ const EditActivity = ({
       onSubmit={async (e) => {
         e.preventDefault();
         try {
+          // updates the actviity
           await updateActivity(token, activityId, {
             name,
             description,
           });
+          // updates the routine activity
           await updateRoutineActivity(token, routineActivityId, {
             count,
             duration,

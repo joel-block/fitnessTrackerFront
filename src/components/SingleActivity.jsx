@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { EditActivity } from "./";
 import { removeActivityFromRoutine } from "../api";
-
+// this is part of single routine component
 const SingleActivity = ({ activity, token }) => {
   const [clickedEdit, setClickedEdit] = useState(false);
   const [editedActivity, setEditedActivity] = useState(false);
@@ -10,7 +10,6 @@ const SingleActivity = ({ activity, token }) => {
   const [editedDuration, setEditedDuration] = useState(null);
   const [editedCount, setEditedCount] = useState(null);
   const [removed, setRemoved] = useState(false);
-
   return (
     <li>
       <span>
@@ -52,6 +51,7 @@ const SingleActivity = ({ activity, token }) => {
           onClick={async (e) => {
             e.preventDefault();
             try {
+              // prompt user to make sure they want to remove activity
               let text = "Are you sure you want to remove this activity?";
               if (confirm(text)) {
                 let response = await removeActivityFromRoutine(

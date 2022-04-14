@@ -18,7 +18,7 @@ const Main = () => {
   const [password, setPassword] = useState("");
   const [token, setToken] = useState("");
   const [user, setUser] = useState({});
-
+  // check local storage for token, if there is one, log in the associated user
   useEffect(() => {
     const checkUser = async () => {
       try {
@@ -63,7 +63,7 @@ const Main = () => {
           <MyRoutines isLoggedIn={isLoggedIn} token={token} user={user} />
         </Route>
         <Route path={"/activities"}>
-          <Activities isLoggedIn={isLoggedIn} token={token} user={user} />
+          <Activities isLoggedIn={isLoggedIn} token={token} />
         </Route>
         <Route path={"/login"}>
           <Login

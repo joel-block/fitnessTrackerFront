@@ -3,7 +3,7 @@ import { getPublicRoutines } from "../api";
 
 const Routines = () => {
   const [routines, setRoutines] = useState([]);
-
+  // setting the routines array after the fetch is completed
   useEffect(() => {
     const getRoutines = async () => {
       const routinesArray = await getPublicRoutines();
@@ -14,6 +14,7 @@ const Routines = () => {
 
   return (
     <div className="routines-page">
+      {/* mapping over routines array to produce single routine cards */}
       {routines.map((routine, i) => {
         return (
           <div key={`publicRoutine-${i}`} className="single-routine">
@@ -22,6 +23,7 @@ const Routines = () => {
             <p>{routine.goal}</p>
             <h4>Activities:</h4>
             <ol>
+              {/* mapping over activities array within the routine and producing listed activities */}
               {routine.activities.map((activity, j) => {
                 return (
                   <li key={`routine-${i}-activity-${j}`}>

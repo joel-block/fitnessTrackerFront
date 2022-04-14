@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
+// displayed on the main component.
 const NavBar = ({ isLoggedIn, setIsLoggedIn, setToken, setUser }) => {
   return (
     <div className="navbar-container">
@@ -25,6 +25,7 @@ const NavBar = ({ isLoggedIn, setIsLoggedIn, setToken, setUser }) => {
           {isLoggedIn ? (
             <Link
               className="nav-item"
+              // when clicked it logs you out and removes token from local storage
               onClick={() => {
                 setIsLoggedIn(false);
                 localStorage.removeItem("token");

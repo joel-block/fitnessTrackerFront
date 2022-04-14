@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { postRoutine } from "../api";
-
+// On the my routines page
 const CreateRoutine = ({
   token,
   setClickedAdd,
@@ -22,9 +22,11 @@ const CreateRoutine = ({
             goal,
             isPublic,
           });
+          // Add empty activities array to new object
           newRoutine.activities = [];
           setClickedAdd(false);
           setAdded(true);
+          // add new routine to be displayed on my routines page
           const updatedRoutines = [newRoutine, ...myRoutines];
           setMyRoutines(updatedRoutines);
         } catch (error) {

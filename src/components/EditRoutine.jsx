@@ -30,33 +30,39 @@ const EditRoutine = ({
         setClickedEditRoutine(false);
       }}
     >
-      <label>Name:</label>
-      <input
-        type="text"
-        placeholder="Name"
-        value={name}
-        onChange={(e) => {
-          e.preventDefault();
-          setName(e.target.value);
-        }}
-      />
-      <label>Goal:</label>
-      <input
-        type="text"
-        placeholder="Goal"
-        value={goal}
-        onChange={(e) => {
-          e.preventDefault();
-          setGoal(e.target.value);
-        }}
-      />
-      <label>Public:</label>
-      <input
-        type="checkbox"
-        onChange={() => {
-          setIsPublic(!isPublic);
-        }}
-      />
+      <span>
+        <label>Name:</label>
+        <input
+          type="text"
+          placeholder="Name"
+          value={name}
+          onChange={(e) => {
+            e.preventDefault();
+            setName(e.target.value);
+          }}
+        />
+      </span>
+      <span>
+        <label>Goal:</label>
+        <input
+          type="text"
+          placeholder="Goal"
+          value={goal}
+          onChange={(e) => {
+            e.preventDefault();
+            setGoal(e.target.value);
+          }}
+        />
+      </span>
+      <span>
+        <label>Public:</label>
+        <input
+          type="checkbox"
+          onChange={() => {
+            setIsPublic(!isPublic);
+          }}
+        />
+      </span>
       <button type="submit">Submit</button>
     </form>
   );

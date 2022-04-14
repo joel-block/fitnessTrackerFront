@@ -66,7 +66,7 @@ const SingleRoutine = ({
       </span>
       <span>
         {clickedEditRoutine ? (
-          <span>
+          <span className="myroutine-editform">
             <EditRoutine
               routineId={routine.id}
               setClickedEditRoutine={setClickedEditRoutine}
@@ -95,7 +95,7 @@ const SingleRoutine = ({
       </span>
       <span>
         {clickedAddActivity ? (
-          <span>
+          <span className="myroutine-editform">
             <AddActivity
               activities={activities}
               token={token}

@@ -1,3 +1,8 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
 .navbar-container {
   background-color: darkslateblue;
   padding: 10px;
@@ -15,6 +20,7 @@ header {
   background-color: lavender;
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
   color: darkslategrey;
+  width: 100vw;
 }
 
 .main-container {
@@ -29,13 +35,14 @@ header {
   background-color: lavender;
   display: inline-block;
   vertical-align: top;
-  height: 600px;
+  height: 400px;
   width: 25%;
   margin: 10px;
   color: darkslategrey;
-  padding: 10px;
+  padding: 15px;
   box-shadow: 10px 5px 5px darkslategrey;
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  overflow-y: scroll;
 }
 
 .single-routine h2 {
@@ -62,4 +69,79 @@ header {
   margin-left: auto;
   margin-right: auto;
   width: 50%;
+}
+
+.single-activity {
+  background-color: lavender;
+  display: inline-block;
+  height: 200px;
+  width: 200px;
+  box-shadow: 10px 10px 5px darkslategray;
+  margin: 10px;
+  color: darkslategray;
+  padding: 10px;
+  vertical-align: top;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+}
+
+.activities-page {
+  background-color: gray;
+}
+
+.activities-page h2 {
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  color: darkslateblue;
+  margin: 10px;
+}
+
+.activity-form {
+  margin: 10px;
+}
+button {
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  color: lavender;
+  background-color: darkslategray;
+  margin: 10px;
+}
+
+label {
+  color: darkslateblue;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  margin: 10px;
+}
+.my-routines-page {
+  color: darkslateblue;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  padding: 10px;
+}
+
+.activity-login {
+  color: darkslateblue;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  font-size: larger;
+}
+.myroutine-editform form {
+  display: flex;
+  flex-direction: column;
+}
+.myroutine-editform form label {
+  font-size: small;
+}
+.myroutine-editform form span {
+  margin-bottom: 2px;
+}
+
+.title-container {
+  display: flex;
+  width: 100%;
+}
+.main-title {
+  margin: 0;
+  padding: 10px;
+  text-align: start;
+}
+.title-container small {
+  position: absolute;
+  top: 10px;
+  right: 10px;
 }

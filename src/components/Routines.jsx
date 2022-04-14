@@ -18,8 +18,8 @@ const Routines = () => {
       {routines.map((routine, i) => {
         return (
           <div key={`publicRoutine-${i}`} className="single-routine">
-            <h2>Routine: {routine.name}</h2>
-            <h3>{routine.creatorName}</h3>
+            <h2>Routine: <u>{routine.name}</u></h2>
+            <h3>Creator: <u>{routine.creatorName}</u></h3>
             <p>{routine.goal}</p>
             <h4>Activities:</h4>
             <ol>

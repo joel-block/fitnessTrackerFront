@@ -38,7 +38,7 @@ const Login = ({
             }
           }}
         >
-          <label>Username</label>
+          <label>Username: </label>
           <input
             type="text"
             value={username}
@@ -47,7 +47,7 @@ const Login = ({
               setUsername(e.target.value);
             }}
           />
-          <label>Password</label>
+          <label>Password: </label>
           <input
             type="password"
             placeholder="Password"

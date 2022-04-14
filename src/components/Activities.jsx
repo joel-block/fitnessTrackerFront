@@ -31,7 +31,7 @@ const Activities = ({ isLoggedIn, token, user }) => {
               />
             </span>
           ) : (
-            <>
+            <span className="activity-form">
               <button
                 onClick={(e) => {
                   e.preventDefault();
@@ -43,20 +43,22 @@ const Activities = ({ isLoggedIn, token, user }) => {
               <span>
                 {created ? <h4>Activity Successfully Created!</h4> : null}
               </span>
-            </>
+            </span>
           )}
         </>
       ) : (
-        <p>Log in to create a new activity!</p>
+        <p className="activity-login">Log in to create a new activity!</p>
       )}
-      {activities.map((activity, i) => {
-        return (
-          <span className="single-activity" key={`activities[${i}]`}>
-            <h3>{activity.name}</h3>
-            <p>{activity.description}</p>
-          </span>
-        );
-      })}
+      <div className="activities-container">
+        {activities.map((activity, i) => {
+          return (
+            <span className="single-activity" key={`activities[${i}]`}>
+              <h3>{activity.name}</h3>
+              <p>{activity.description}</p>
+            </span>
+          );
+        })}
+      </div>
     </div>
   );
 };

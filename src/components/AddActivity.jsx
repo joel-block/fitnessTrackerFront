@@ -41,24 +41,28 @@ const AddActivity = ({
           );
         })}
       </select>
-      <label>Duration: </label>
-      <input
-        type="number"
-        placeholder="0"
-        value={duration}
-        onChange={(e) => {
-          setDuration(e.target.value);
-        }}
-      />
-      <label>Count: </label>
-      <input
-        type="number"
-        placeholder="0"
-        value={count}
-        onChange={(e) => {
-          setCount(e.target.value);
-        }}
-      />
+      <span>
+        <label>Duration: </label>
+        <input
+          type="number"
+          placeholder="0"
+          value={duration}
+          onChange={(e) => {
+            setDuration(e.target.value);
+          }}
+        />
+      </span>
+      <span>
+        <label>Count: </label>
+        <input
+          type="number"
+          placeholder="0"
+          value={count}
+          onChange={(e) => {
+            setCount(e.target.value);
+          }}
+        />
+      </span>
       <button type="submit">Submit</button>
     </form>
   );

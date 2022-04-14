@@ -40,8 +40,10 @@ const Main = () => {
   return (
     <div className="main-container">
       <header>
-        <h1 className="main-title">Fitness Trac.kr</h1>
-        {user.username ? <small>Logged in as: {user.username}</small> : null}
+        <div className="title-container">
+          <h1 className="main-title">Fitness Trac.kr</h1>
+          {user.username ? <small>Logged in as: {user.username}</small> : null}
+        </div>
         <NavBar
           isLoggedIn={isLoggedIn}
           setIsLoggedIn={setIsLoggedIn}

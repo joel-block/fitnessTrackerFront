@@ -41,44 +41,52 @@ const EditActivity = ({
         }
       }}
     >
-      <label>Name:</label>
-      <input
-        type="text"
-        placeholder="Name"
-        value={name}
-        onChange={(e) => {
-          e.preventDefault();
-          setName(e.target.value);
-        }}
-      />
-      <label>Description:</label>
-      <input
-        type="text"
-        placeholder="Description"
-        value={description}
-        onChange={(e) => {
-          e.preventDefault();
-          setDescription(e.target.value);
-        }}
-      />
-      <label>Duration:</label>
-      <input
-        type="number"
-        value={duration}
-        onChange={(e) => {
-          e.preventDefault();
-          setDuration(e.target.value);
-        }}
-      />
-      <label>Count:</label>
-      <input
-        type="number"
-        value={count}
-        onChange={(e) => {
-          e.preventDefault();
-          setCount(e.target.value);
-        }}
-      />
+      <span>
+        <label>Name:</label>
+        <input
+          type="text"
+          placeholder="Name"
+          value={name}
+          onChange={(e) => {
+            e.preventDefault();
+            setName(e.target.value);
+          }}
+        />
+      </span>
+      <span>
+        <label>Description:</label>
+        <input
+          type="text"
+          placeholder="Description"
+          value={description}
+          onChange={(e) => {
+            e.preventDefault();
+            setDescription(e.target.value);
+          }}
+        />
+      </span>
+      <span>
+        <label>Duration:</label>
+        <input
+          type="number"
+          value={duration}
+          onChange={(e) => {
+            e.preventDefault();
+            setDuration(e.target.value);
+          }}
+        />
+      </span>
+      <span>
+        <label>Count:</label>
+        <input
+          type="number"
+          value={count}
+          onChange={(e) => {
+            e.preventDefault();
+            setCount(e.target.value);
+          }}
+        />
+      </span>
       <button type="submit">Submit</button>
     </form>
   );

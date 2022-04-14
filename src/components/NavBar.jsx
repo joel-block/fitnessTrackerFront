@@ -11,7 +11,13 @@ const NavBar = ({ isLoggedIn, setIsLoggedIn, setToken, setUser }) => {
         <Link to={"/routines"} className="nav-item">
           Routines
         </Link>
-        <>{isLoggedIn ? <Link to={"/myroutines"}>My Routines</Link> : null}</>
+        <>
+          {isLoggedIn ? (
+            <Link to={"/myroutines"} className="nav-item">
+              My Routines
+            </Link>
+          ) : null}
+        </>
         <Link to={"/activities"} className="nav-item">
           Activities
         </Link>

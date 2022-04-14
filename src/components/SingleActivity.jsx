@@ -75,7 +75,7 @@ const SingleActivity = ({ activity, token }) => {
       </span>
       <span>
         {clickedEdit ? (
-          <span>
+          <span className="myroutine-editform">
             <EditActivity
               token={token}
               activityId={activity.id}

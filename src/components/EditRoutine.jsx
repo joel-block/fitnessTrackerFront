@@ -54,7 +54,7 @@ const EditRoutine = ({
       <input
         type="checkbox"
         onChange={() => {
-          setIsPublic(true);
+          setIsPublic(!isPublic);
         }}
       />
       <button type="submit">Submit</button>

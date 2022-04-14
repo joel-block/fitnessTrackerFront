@@ -1,15 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import { registerUser } from "../api";
 
 const Register = ({
+  setUser,
   username,
   setUsername,
   password,
   setPassword,
-  isLoggedIn,
   setIsLoggedIn,
   setToken,
 }) => {
+  const [message, setMessage] = useState("");
+  const [clickedSubmit, setClickedSubmit] = useState(false);
+
   return (
     <div className="registration-page">
       <h2>Welcome to FitnessTrac.kr</h2>
@@ -19,8 +22,14 @@ const Register = ({
             e.preventDefault();
             try {
               const response = await registerUser(username, password);
-              setToken(response.token);
-              setIsLoggedIn(true);
+              if (response.message === "you're signed up!") {
+                setIsLoggedIn(true);
+                setToken(response.token);
+                localStorage.setItem("token", response.token);
+                setUser(response.user);
+              }
+              setMessage(response.message);
+              setClickedSubmit(true);
               setUsername("");
               setPassword("");
             } catch (error) {
@@ -31,7 +40,7 @@ const Register = ({
             }
           }}
         >
-          <label>Username</label>
+          <label>Username:</label>
           <input
             type="text"
             value={username}
@@ -40,7 +49,7 @@ const Register = ({
               setUsername(e.target.value);
             }}
           />
-          <label>Password</label>
+          <label>Password:</label>
           <input
             type="password"
             placeholder="Password"
@@ -52,7 +61,7 @@ const Register = ({
           <button type="submit">Register</button>
         </form>
         <span className="registration-confirm">
-          {isLoggedIn ? <p>You've successfully registered!</p> : null}
+          {clickedSubmit ? <p>{message}</p> : null}
         </span>
       </div>
     </div>

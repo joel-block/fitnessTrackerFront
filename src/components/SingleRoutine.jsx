@@ -2,13 +2,18 @@ import React, { useState } from "react";
 import { EditRoutine, SingleActivity, AddActivity } from "./";
 import { deleteRoutine } from "../api";
 
-const SingleRoutine = ({ routine, token, activities }) => {
+const SingleRoutine = ({
+  routine,
+  token,
+  activities,
+  myRoutines,
+  setMyRoutines,
+}) => {
   const [clickedEditRoutine, setClickedEditRoutine] = useState(false);
   const [edited, setEdited] = useState(false);
   const [editedName, setEditedName] = useState("");
   const [editedGoal, setEditedGoal] = useState("");
   const [editedPublic, setEditedPublic] = useState(false);
-  const [deleted, setDeleted] = useState(false);
   const [clickedAddActivity, setClickedAddActivity] = useState(false);
   const [added, setAdded] = useState(false);
 
@@ -45,7 +50,10 @@ const SingleRoutine = ({ routine, token, activities }) => {
             if (confirm(text)) {
               let response = await deleteRoutine(token, routine.id);
               if (response.success) {
-                setDeleted(true);
+                const filteredRoutines = myRoutines.filter((pastRoutine) => {
+                  return pastRoutine.id !== routine.id;
+                });
+                setMyRoutines(filteredRoutines);
                 alert("Routine successfully deleted!");
               } else {
                 alert("There was a problem deleting your routine!");
@@ -72,7 +80,6 @@ const SingleRoutine = ({ routine, token, activities }) => {
         ) : null}
       </span>
       <span>{edited ? <h4>Routine Successfully Edited!</h4> : null}</span>
-      <span>{deleted ? <h4>Routine Successfully Deleted!</h4> : null}</span>
 
       <h4>Activities:</h4>
       <button
@@ -104,6 +111,7 @@ const SingleRoutine = ({ routine, token, activities }) => {
           return (
             <SingleActivity
               key={`myroutine-activity-${j}`}
+              token={token}
               activity={activity}
             />
           );

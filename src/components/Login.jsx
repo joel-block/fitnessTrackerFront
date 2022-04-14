@@ -1,15 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import { loginUser } from "../api";
 
 const Login = ({
+  setUser,
   username,
   setUsername,
   password,
   setPassword,
-  isLoggedIn,
   setIsLoggedIn,
   setToken,
 }) => {
+  const [message, setMessage] = useState("");
+  const [clickedSubmit, setClickedSubmit] = useState(false);
+
   return (
     <div className="registration-page">
       <h2>Welcome Back to FitnessTrac.kr</h2>
@@ -19,8 +22,14 @@ const Login = ({
             e.preventDefault();
             try {
               const response = await loginUser(username, password);
-              setToken(response.token);
-              setIsLoggedIn(true);
+              if (response.message === "you're logged in!") {
+                setIsLoggedIn(true);
+                setToken(response.token);
+                localStorage.setItem("token", response.token);
+                setUser(response.user);
+              }
+              setMessage(response.message);
+              setClickedSubmit(true);
               setUsername("");
               setPassword("");
             } catch (error) {
@@ -49,7 +58,7 @@ const Login = ({
           <button type="submit">Login</button>
         </form>
         <span className="registration-confirm">
-          {isLoggedIn ? <p>You've successfully Logged In!</p> : null}
+          {clickedSubmit ? <p>{message}</p> : null}
         </span>
       </div>
     </div>

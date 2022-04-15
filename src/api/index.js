@@ -1,4 +1,4 @@
-const API_URL = "http://fitnesstrac-kr.herokuapp.com/api/";
+const API_URL = "https://fitnesstrac-kr.herokuapp.com/api/";
 
 //Function creates a new user
 

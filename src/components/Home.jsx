@@ -1,7 +1,7 @@
 import React from "react";
-import woman from "../images/woman.webp";
+import woman from "../images/woman.jpeg";
 
-const Home = (props) => {
+const Home = () => {
   return <img id="woman" src={woman} alt="woman exercising" />;
 };
 

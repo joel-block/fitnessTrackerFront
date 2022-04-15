@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Switch, Route, Redirect } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 
 import {
   NavBar,
@@ -89,7 +89,6 @@ const Main = () => {
             setToken={setToken}
           />
         </Route>
-        <Redirect to={"/"} />
       </Switch>
     </div>
   );
